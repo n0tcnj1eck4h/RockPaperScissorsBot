@@ -14,15 +14,13 @@ label = tk.Label(root, text='Rock, paper, scissors!', bg='lavenderblush', justif
 label.config(font=('arial', 14, 'bold'))
 canvas.create_window(105, 15, window=label)
 
-cwd = os.getcwd()
-img_dir = cwd + '\\Data\\'
+img_dir = os.path.join(os.getcwd(), 'Data')
 
-empty_img = PhotoImage(file=(img_dir + '\\empty.png'))
-rock_img = PhotoImage(file=(img_dir + '\\rock.png'))
-paper_img = PhotoImage(file=(img_dir + '\\paper.png'))
-scissors_img = PhotoImage(file=(img_dir + '\\scissors.png'))
+empty_img = PhotoImage(file=(os.path.join(img_dir, 'empty.png')))
+rock_img = PhotoImage(file=(os.path.join(img_dir, 'rock.png')))
+paper_img = PhotoImage(file=(os.path.join(img_dir, 'paper.png')))
+scissors_img = PhotoImage(file=(os.path.join(img_dir, 'scissors.png')))
 
-print('cwd', cwd)
 print('img_dir', img_dir)
 print('rock_img', rock_img)
 
@@ -46,7 +44,7 @@ def check_result():
     import random
     global counter_throw
 
-    r = random.randint(1,100)
+    r = random.randint(1, 100)
 
     if r < 80:
         last0 = movehistory[-1]
@@ -104,14 +102,14 @@ def throw_rock():
         global losses
         losses = losses + 1
         print(f'Losses:{losses}')
-        labellosses['text'] = f'Loss:{losses}'
+        labellosses['text'] = f'Lost:{losses}'
     else:
         label2['text'] = 'You won!'
         print('won')
         global wins
         wins = wins + 1
         print(f'Wins:{wins}')
-        labelwins['text'] = f'Wins:{wins}'
+        labelwins['text'] = f'Won:{wins}'
 
     movehistory.append('Rock')
 
@@ -130,14 +128,14 @@ def throw_paper():
         global losses
         losses = losses + 1
         print(f'Losses:{losses}')
-        labellosses['text'] = f'Loss:{losses}'
+        labellosses['text'] = f'Lost:{losses}'
     else:
         label2['text'] = 'You won!'
         print('won')
         global wins
         wins = wins + 1
         print(f'Wins:{wins}')
-        labelwins['text'] = f'Wins:{wins}'
+        labelwins['text'] = f'Won:{wins}'
 
     movehistory.append('Paper')
 
@@ -156,14 +154,14 @@ def throw_scissors():
         global losses
         losses = losses + 1
         print(f'Losses:{losses}')
-        labellosses['text'] = f'Loss:{losses}'
+        labellosses['text'] = f'Lost:{losses}'
     else:
         label2['text'] = 'You won!'
         print('won')
         global wins
         wins = wins + 1
         print(f'Wins:{wins}')
-        labelwins['text'] = f'Wins:{wins}'
+        labelwins['text'] = f'Won:{wins}'
 
     movehistory.append('Scissors')
 
@@ -190,11 +188,11 @@ label2 = tk.Label(root, text='Throw these hands!', bg='lavenderblush')
 label2.config(font=('arial', 14, 'bold'))
 canvas.create_window(110, 315, window=label2)
 
-labelwins = tk.Label(root, text=f'Wins:{wins}', bg='lavenderblush')
+labelwins = tk.Label(root, text=f'Won:{wins}', bg='lavenderblush')
 labelwins.config(font=('arial', 14, 'bold'))
 canvas.create_window(170, 340, window=labelwins)
 
-labellosses = tk.Label(root, text=f'Loss:{losses}', bg='lavenderblush')
+labellosses = tk.Label(root, text=f'Lost:{losses}', bg='lavenderblush')
 labellosses.config(font=('arial', 14, 'bold'))
 canvas.create_window(50, 340, window=labellosses)
 
