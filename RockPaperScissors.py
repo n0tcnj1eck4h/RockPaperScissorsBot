@@ -199,8 +199,7 @@ canvas.create_window(50, 340, window=labellosses)
 
 def exitbtn():
     root.destroy()
-    import subprocess
-    subprocess.call("Menu.py", shell=True)
+    exit()
 
 
 exitbt = tk.Button(root, text='Back', command=exitbtn, font=('arial', 8), bg='pink', fg='black')
