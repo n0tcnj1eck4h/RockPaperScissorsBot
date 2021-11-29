@@ -1,6 +1,7 @@
 import tkinter as tk
 from tkinter import *
 import os
+import random
 
 root = tk.Tk()
 root.title('')
@@ -41,45 +42,8 @@ def display_result():
 
 
 def check_result():
-    import random
     global counter_throw
-
-    r = random.randint(1, 100)
-
-    if r < 80:
-        last0 = movehistory[-1]
-        last1 = movehistory[-2]
-        last2 = movehistory[-3]
-
-        counter0 = counterhistory[-1]
-
-        if last0 == last1 == last2:
-            if last0 == 'Rock':
-                counter_throw = 2
-            elif last0 == 'Paper':
-                counter_throw = 3
-            else:
-                counter_throw = 1
-        elif last0 == 'Rock':
-            if counter0 == 'Paper':
-                counter_throw = 1
-        elif last0 == 'Paper':
-            if counter0 == 'Scissors':
-                counter_throw = 2
-        elif last0 == 'Scissors':
-            if counter0 == 'Rock':
-                counter_throw = 3
-        else:
-            if last0 == 'Rock':
-                counter_throw = 2
-            elif last0 == 'Paper':
-                counter_throw = 3
-            else:
-                counter_throw = 1
-
-    else:
-        counter_throw = random.randint(1, 3)
-
+    counter_throw = (throw % 3) + 1
     display_result()
 
 
