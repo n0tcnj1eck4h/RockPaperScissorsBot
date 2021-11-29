@@ -202,7 +202,7 @@ def exitbtn():
     exit()
 
 
-exitbt = tk.Button(root, text='Back', command=exitbtn, font=('arial', 8), bg='pink', fg='black')
+exitbt = tk.Button(root, text='Exit', command=exitbtn, font=('arial', 8), bg='pink', fg='black')
 canvas.create_window(110, 340, window=exitbt)
 
 root.mainloop()
